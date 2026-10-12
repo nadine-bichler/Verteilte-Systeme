@@ -1,6 +1,6 @@
 import logging
 import sys
-from PyQt5.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication
 from gui.main_window import GameGUI
 
 def setup_logging():

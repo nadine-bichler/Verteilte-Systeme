@@ -1,7 +1,7 @@
 import datetime
 
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtCore import QTimer
+from PySide6.QtWidgets import QMessageBox
+from PySide6.QtCore import QTimer
 from game.game_engine import GameEngine
 from network.connection import Network
 from network.protocol import GameProtocol
@@ -21,7 +21,7 @@ class MainController:
 
         self.last_own_action = datetime.datetime.now()
 
-        self.timeout_limit = 3
+        self.timeout_limit = 100
 
         self.self_check_timer = QTimer()
         self.self_check_timer.timeout.connect(self.check_self_timeout)

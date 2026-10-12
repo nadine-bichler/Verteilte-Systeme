@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QFrame, QListWidget, QListWidgetItem, QFormLayout, QLineEdit, \
+from PySide6.QtWidgets import QWidget, QGridLayout, QLabel, QFrame, QListWidget, QListWidgetItem, QFormLayout, QLineEdit, \
     QPushButton, QColorDialog, QSizePolicy
-from PyQt5.QtCore import Qt, pyqtSignal
-from PyQt5.QtGui import QColor, QBrush
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtGui import QColor, QBrush
 
 class BattlefieldWidget(QFrame):
     def __init__(self, size=25):
@@ -71,15 +71,18 @@ class BattlefieldWidget(QFrame):
         """deletes old grid and builds new one with desired lengths"""
         self.grid_size = new_size
 
-        # delete old layout
         if self.layout() is not None:
-            while self.layout().count():
-                item = self.layout().takeAt(0)
+            old_layout = self.layout()
+
+            while old_layout.count():
+                item = old_layout.takeAt(0)
                 widget = item.widget()
                 if widget:
                     widget.deleteLater()
-            import sip
-            sip.delete(self.layout())
+
+            from PySide6.QtWidgets import QWidget
+            dummy = QWidget()
+            dummy.setLayout(old_layout)
 
         self.cells = {}
         self.init_ui()
@@ -118,7 +121,7 @@ class PlayerListWidget(QListWidget):
 
 
 class ConnectionWidget(QFrame):
-    start_requested = pyqtSignal(str, int, str, str, str, int)
+    start_requested = Signal(str, int, str, str, str, int)
 
     def __init__(self):
         super().__init__()

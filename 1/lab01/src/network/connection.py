@@ -3,11 +3,11 @@ import socket
 import threading
 import json
 import traceback
-from PyQt5.QtCore import QObject, pyqtSignal
+from PySide6.QtCore import QObject, Signal
 
 
 class Network(QObject):
-    message_received = pyqtSignal(str, dict, tuple)
+    message_received = Signal(str, dict, tuple)
     def __init__(self, port):
         super().__init__()
         self.port = port

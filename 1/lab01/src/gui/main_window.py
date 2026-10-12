@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QHBoxLayout, QMessageBox, QVBoxLayout, QPushButton
-from PyQt5.QtCore import pyqtSignal, Qt
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QMessageBox, QVBoxLayout, QPushButton
+from PySide6.QtCore import Signal, Qt
 from .widgets import ConnectionWidget, BattlefieldWidget, PlayerListWidget
 
 class GameGUI(QWidget):
-    input_received = pyqtSignal(str)
+    input_received = Signal(str)
 
     def __init__(self):
         super().__init__()
@@ -62,8 +62,8 @@ class GameGUI(QWidget):
             self.sidebar = PlayerListWidget()
 
         if not hasattr(self, 'sidebar_widget') or self.sidebar_widget is None:
-            from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
-            from PyQt5.QtCore import Qt
+            from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton
+            from PySide6.QtCore import Qt
 
             self.sidebar_widget = QWidget()
             self.sidebar_widget.setMinimumWidth(220)
@@ -115,7 +115,7 @@ class GameGUI(QWidget):
 
 
     def keyPressEvent(self, event):
-        from PyQt5.QtCore import Qt
+        from PySide6.QtCore import Qt
         keys = {Qt.Key_Up: "UP", Qt.Key_Down: "DOWN", Qt.Key_Left: "LEFT", Qt.Key_Right: "RIGHT"}
         if event.key() in keys:
             self.input_received.emit(keys[event.key()])
