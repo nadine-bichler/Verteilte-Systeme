@@ -1,66 +1,66 @@
-# Praktikum Verteilte Systeme
+# Distributed Systems Lab
 
-Dieses Repository enthält die im Rahmen des Praktikums **Verteilte Systeme** (Prof. Dr. Erwin Mayer) entwickelten Laborversuche. Als Programmiersprachen wurden Java und Python eingesetzt, basierend auf Netzwerkinfrastrukturen mit UDP, gRPC und simulierten verteilten Netzwerken.
-
----
-
-## 📋 Inhaltsverzeichnis
-1. [Labor 1: Peer-to-Peer Computing (Multi-Player-Spiel)](#labor-1-peer-to-peer-computing-multi-player-spiel)
-2. [Labor 2: gRPC-Programmierung (Chat-Anwendung & Service-Chaining)](#labor-2-grpc-programmierung-chat-anwendung--service-chaining)
-3. [Labor 3: Verteilte Algorithmen (Echo-Algorithmus & Simulation)](#labor-3-verteilte-algorithmen-echo-algorithmus--simulation)
+This repository contains the laboratory experiments developed as part of the **Distributed Systems** practical course (Prof. Dr. Erwin Mayer). Java and Python were used as programming languages, based on network infrastructures with UDP, gRPC, and simulated distributed networks.
 
 ---
 
-## Labor 1: Peer-to-Peer Computing (Multi-Player-Spiel)
-
-Im ersten Versuch wurde eine einfache, verteilte Peer-to-Peer-Anwendung in Form eines Multi-Player-Spiels (angelehnt an das Prinzip von "Tron" / 4-Gewinnt-Spurstruktur) realisiert.
-
-* **Architektur:** Pure Peer-to-Peer-Architektur (Friend-Ansatz über Join-Kommando, kein zentrales Routing nötig).
-* **Kommunikation:** Nachrichtenbasiert über **UDP-Sockets** unter Verwendung von **JSON** für die Datenstrukturen.
-* **Funktionen (Teil 1):** 
-  * Quadratisches Spielfeld ($M \times M$) mit konfigurierbarer Größe und bis zu 4 Spielern.
-  * Steuerung über Pfeiltasten mit permanenter Hinterlassung einer Spur (Kollisionserkennung mit Wänden und Spuren führt zum Ausscheiden).
-  * Echtzeitsynchronisation aller Spielzustände zwischen den Peers und Visualisierung via GUI.
-* **Erweiterungen (Teil 2):** 
-  * Dynamische Gruppenzusammensetzung mit `Join`- und `Leave`-Kommandos.
-  * Verwaltung von aktiven Online-Peers und automatisches Versenden von Nachrichten nur an erreichbare Teilnehmer.
+## Table of Contents
+1. [Lab 1: Peer-to-Peer Computing (Multi-Player Game)](#lab-1-peer-to-peer-computing-multi-player-game)
+2. [Lab 2: gRPC Programming (Chat Application & Service Chaining)](#lab-2-grpc-programming-chat-application--service-chaining)
+3. [Lab 3: Distributed Algorithms (Echo Algorithm & Simulation)](#lab-3-distributed-algorithms-echo-algorithm--simulation)
 
 ---
 
-## Labor 2: gRPC-Programmierung (Chat-Anwendung & Service-Chaining)
+## Lab 1: Peer-to-Peer Computing (Multi-Player Game)
 
-Der zweite Versuch widmete sich einer Service-orientierten Architektur (SOA) unter Einsatz von **gRPC (Google RPC)** und Protocol Buffers (Proto3) als Middleware.
+In the first experiment, a simple distributed peer-to-peer application was implemented in the form of a multi-player game (inspired by the concept of "Tron" / trail structure).
 
-* **Technologien:** Java, gRPC, Protocol Buffers (`.proto`-Spezifikationen), IntelliJ.
-* **Teilaufgabe 1 (Klassischer Chat):**
-  * Registrierung von $N$ Chat-Teilnehmern ($2 < N \le 10$) über Nicknames mit Fehlerbehandlung bei Duplikaten.
-  * Senden und Empfangen von Nachrichten an alle aktiven Teilnehmer sowie Abfrage der aktuellen Teilnehmerliste.
-  * Verwendung von gRPC-Streaming-Mechanismen und `oneof`-Syntaxelementen.
-  * Analyse von übertragenen Nachrichten auf Byte-Ebene (Hex-Dekodierung von String- und Integer-Feldern) mithilfe von **Wireshark**.
-* **Teilaufgabe 2 (Service-Chaining / History-Server):**
-  * Realisierung eines eigenständigen **History-Servers** als zusätzlicher Service.
-  * Der Hauptserver spiegelt alle Chat-Einträge via gRPC-Stream auf den History-Server (*Service-Chaining*).
-  * Neue Clients werden beim Beitritt direkt mit der bisherigen Chat-Historie versorgt.
+- **Architecture:** Pure peer-to-peer architecture (friend approach via join command, no central routing required).
+- **Communication:** Message-based via **UDP sockets** using **JSON** for data structures.
+- **Features (Part 1):** 
+  * Square playing field ($M \times M$) with configurable size and up to 4 players.
+  * Control via arrow keys, permanently leaving a trail (collision detection with walls and trails leads to elimination).
+  * Real-time synchronization of all game states between peers and visualization via GUI.
+- **Extensions (Part 2):** 
+  * Dynamic group composition with `Join` and `Leave` commands.
+  * Management of active online peers and automatic message dispatch exclusively to reachable participants.
+
+---
+
+## Lab 2: gRPC Programming (Chat Application & Service Chaining)
+
+The second experiment focused on a Service-Oriented Architecture (SOA) using **gRPC (Google RPC)** and Protocol Buffers (Proto3) as middleware.
+
+- **Technologies:** Java, gRPC, Protocol Buffers (`.proto` specifications), IntelliJ.
+- **Subtask 1 (Classic Chat):**
+  * Registration of $N$ chat participants ($2 < N \le 10$) via nicknames with duplicate error handling.
+  * Sending and receiving messages to all active participants as well as querying the current participant list.
+  * Use of gRPC streaming mechanisms and `oneof` syntax elements.
+  * Analysis of transmitted messages at the byte level (hex decoding of string and integer fields) using **Wireshark**.
+- **Subtask 2 (Service Chaining / History Server):**
+  * Implementation of an independent **History Server** as an additional service.
+  * The main server mirrors all chat entries to the history server via a gRPC stream (*Service Chaining*).
+  * New clients are provided with the existing chat history directly upon joining.
 
 ---
 
-## Labor 3: Verteilte Algorithmen (Echo-Algorithmus & Simulation)
+## Lab 3: Distributed Algorithms (Echo Algorithm & Simulation)
 
-Im dritten Versuch wurden verteilte Algorithmen und Prinzipien zur Durchführung einer verteilten Berechnung (Summenbildung von Speicherplätzen im Netzwerk) ohne zentralen Koordinator untersucht.
+The third experiment examined distributed algorithms and principles for performing distributed computations (summing up memory locations in the network) without a central coordinator.
 
-* **Kernkonzepte:** 
-  * Anwendung des **Flooding-** und **Echo-Algorithmus** auf Basis von UDP-Nachrichten.
-  * Event/Action-Bauart von verteilten Algorithmen.
-* **Simulationsumgebung:**
-  * Ein in einer JSON-Datei (`mynet.json`) spezifiziertes Netzwerk mit $N \ge 10$ Knoten und zwischen $2N$ und $3N$ Kanten.
-  * Jeder Knoten wird als eigener Prozess gestartet, gesteuert über eine Deployment-Komponente via Kommandozeilenargumente.
-  * Simulation von variablen Nachrichten-Latenzen mittels künstlicher Verzögerungen (`sleep`).
-* **Controller-Prozess & Logging:**
-  * Ein zentraler Controller stößt den Algorithmus an (START-Nachricht) und sammelt kontinuierlich `LOG`-Nachrichten (Zeitstempel, Absender, Empfänger, Nachrichtentyp I/E).
-  * Am Ende ermittelt und visualisiert der Controller die Gesamtsumme des verfügbaren Speichers sowie die Anzahl der ausgetauschten Nachrichten.
-* **Erweiterungen (Heimarbeit & Remote-Deployment):**
-  * Automatisiertes Remote-Starten von Prozessen über **SSH** (`Runtime.exec` / `ProcessBuilder`) auf verteilten Rechnern.
-  * Erweiterung des Algorithmus zur Ermittlung der **Top-5-Speicherplatzverbraucher** im Netzwerk.
+- **Core Concepts:** 
+  * Application of the **Flooding** and **Echo algorithms** based on UDP messages.
+  * Event/action design pattern for distributed algorithms.
+- **Simulation Environment:**
+  * A network specified in a JSON file (`mynet.json`) with $N \ge 10$ nodes and between $2N$ and $3N$ edges.
+  * Each node is started as a separate process, controlled via a deployment component using command-line arguments.
+  * Simulation of variable message latencies using artificial delays (`sleep`).
+- **Controller Process & Logging:**
+  * A central controller triggers the algorithm (START message) and continuously collects `LOG` messages (timestamp, sender, receiver, message type I/E).
+  * At the end, the controller determines and visualizes the total available memory as well as the number of exchanged messages.
+- **Extensions (Homework & Remote Deployment):**
+  * Automated remote process startup via **SSH** (`Runtime.exec` / `ProcessBuilder`) on distributed machines.
+  * Extension of the algorithm to determine the **top 5 memory consumers** in the network.
 
 ---
-*Erstellt im Rahmen des Praktikums Verteilte Systeme.*
+*Created as part of the Distributed Systems lab course.*
