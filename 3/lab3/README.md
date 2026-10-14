@@ -62,7 +62,7 @@ The `Deployment` class is the main entry point (also set as `mainClass`). It:
 3. starts every node as its own process,
 4. terminates all processes when the main window is closed.
 
-Run it from the project root so `mynet.json` is found:
+Run it from 3/lab3 so `mynet.json` is found:
 
 ```powershell
 .\gradlew.bat run
