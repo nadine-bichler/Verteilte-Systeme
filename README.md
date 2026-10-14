@@ -1,6 +1,6 @@
 # Distributed Systems Lab
 
-This repository contains the laboratory experiments developed as part of the **Distributed Systems** practical course (Prof. Dr. Erwin Mayer). Java and Python were used as programming languages, based on network infrastructures with UDP, gRPC, and simulated distributed networks.
+This repository contains the laboratory experiments developed as part of the **Distributed Systems** practical course. Java and Python were used as programming languages, based on network infrastructures with UDP, gRPC, and simulated distributed networks.
 
 ---
 
@@ -15,13 +15,13 @@ This repository contains the laboratory experiments developed as part of the **D
 
 In the first experiment, a simple distributed peer-to-peer application was implemented in the form of a multi-player game (inspired by the concept of "Tron" / trail structure).
 
-- **Architecture:** Pure peer-to-peer architecture (friend approach via join command, no central routing required).
+- **Architecture:** Pure peer-to-peer architecture.
 - **Communication:** Message-based via **UDP sockets** using **JSON** for data structures.
-- **Features (Part 1):** 
-  * Square playing field ($M \times M$) with configurable size and up to 4 players.
+- **Features:** 
+  * Square playing field with configurable size and up to 4 players.
   * Control via arrow keys, permanently leaving a trail (collision detection with walls and trails leads to elimination).
   * Real-time synchronization of all game states between peers and visualization via GUI.
-- **Extensions (Part 2):** 
+- **Extensions:** 
   * Dynamic group composition with `Join` and `Leave` commands.
   * Management of active online peers and automatic message dispatch exclusively to reachable participants.
 
@@ -29,15 +29,14 @@ In the first experiment, a simple distributed peer-to-peer application was imple
 
 ## Lab 2: gRPC Programming (Chat Application & Service Chaining)
 
-The second experiment focused on a Service-Oriented Architecture (SOA) using **gRPC (Google RPC)** and Protocol Buffers (Proto3) as middleware.
+The second experiment focused on a Service-Oriented Architecture using **gRPC** and Protocol Buffers (Proto3) as middleware.
 
 - **Technologies:** Java, gRPC, Protocol Buffers (`.proto` specifications), IntelliJ.
-- **Subtask 1 (Classic Chat):**
+- **Classic Chat:**
   * Registration of $N$ chat participants ($2 < N \le 10$) via nicknames with duplicate error handling.
   * Sending and receiving messages to all active participants as well as querying the current participant list.
   * Use of gRPC streaming mechanisms and `oneof` syntax elements.
-  * Analysis of transmitted messages at the byte level (hex decoding of string and integer fields) using **Wireshark**.
-- **Subtask 2 (Service Chaining / History Server):**
+- **Service Chaining / History Server:**
   * Implementation of an independent **History Server** as an additional service.
   * The main server mirrors all chat entries to the history server via a gRPC stream (*Service Chaining*).
   * New clients are provided with the existing chat history directly upon joining.
@@ -58,9 +57,6 @@ The third experiment examined distributed algorithms and principles for performi
 - **Controller Process & Logging:**
   * A central controller triggers the algorithm (START message) and continuously collects `LOG` messages (timestamp, sender, receiver, message type I/E).
   * At the end, the controller determines and visualizes the total available memory as well as the number of exchanged messages.
-- **Extensions (Homework & Remote Deployment):**
-  * Automated remote process startup via **SSH** (`Runtime.exec` / `ProcessBuilder`) on distributed machines.
-  * Extension of the algorithm to determine the **top 5 memory consumers** in the network.
 
 ---
 *Created as part of the Distributed Systems lab course.*
