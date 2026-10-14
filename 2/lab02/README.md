@@ -83,7 +83,3 @@ java -cp "build\classes\java\main;<dependencies>" chat.myHistoryServer
 - Client commands:
   - `!List` - print the current list of active members.
   - `!Exit` - leave the chat and close the connection.
-
-### 4. (Optional) Wireshark analysis
-
-Start a capture on the loopback interface while chatting and inspect the gRPC/HTTP2 frames to decode the protobuf string and integer fields at the byte level.
