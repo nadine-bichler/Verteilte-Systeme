@@ -37,8 +37,6 @@ project1/
         └── protocol.py         # Builds JSON messages (move, dead, ...)
 ```
 
-> `__pycache__/` folders are omitted.
-
 **Architecture (MVC-like):**
 
 | Layer        | Folder        | Responsibility                                     |
