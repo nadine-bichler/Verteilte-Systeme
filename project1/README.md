@@ -15,13 +15,15 @@ A distributed peer-to-peer game in the style of **Tron** (light cycles). Multipl
 ## Project Structure
 
 ```text
-lab01/
-├── lab01.iml                 # IntelliJ/PyCharm module definition
+project1/
+├── .idea/                      # PyCharm/IntelliJ project configuration
+├── assets/                     # Screenshots (see below)
+├── lab01.iml                   # IntelliJ/PyCharm module definition
 ├── README.md
+├── requirements.txt            # Dependencies (PySide6, ...)
 └── src/
-    ├── main.py               # Entry point (starts QApplication and GameGUI)
-    ├── main.spec             # PyInstaller spec for building an EXE
-    ├── requirements.txt      # Dependencies (PySide6, ...)
+    ├── main.py                 # Entry point (starts QApplication and GameGUI)
+    ├── main.spec               # PyInstaller spec for building an EXE
     ├── controller/
     │   └── main_controller.py  # Mediates between GUI, game logic, and network
     ├── game/
@@ -34,6 +36,8 @@ lab01/
         ├── connection.py       # UDP socket, receive thread, signal/slot wiring
         └── protocol.py         # Builds JSON messages (move, dead, ...)
 ```
+
+> `__pycache__/` folders are omitted.
 
 **Architecture (MVC-like):**
 
@@ -56,7 +60,7 @@ lab01/
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-pip install -r src\requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 2. Start
@@ -85,3 +89,11 @@ pyinstaller main.spec --distpath .\dist --workpath .\build
 ```
 
 The result is placed under `dist/main/`.
+
+## Screenshots
+
+![Screenshot 1](assets/Screenshot%202026-04-26%20210833.png)
+
+![Screenshot 2](assets/Screenshot%202026-04-26%20210852.png)
+
+![Screenshot 3](assets/Screenshot%202026-04-26%20210913.png)

@@ -19,11 +19,16 @@ A simulation of distributed algorithms on a network of independent node processe
 ## Project Structure
 
 ```text
-lab3/
+project3/
+├── .gitignore                  # Ignores build/, .gradle/, .idea/, out/
+├── .idea/                      # IntelliJ IDEA project configuration
+├── assets/                     # Screenshots / diagrams
 ├── build.gradle.kts            # java + application plugin, Jackson, fat-jar task
 ├── settings.gradle.kts
+├── gradle/wrapper/             # Gradle wrapper jar + properties
 ├── gradlew / gradlew.bat       # Gradle wrapper (8.4)
 ├── mynet.json                  # Network topology (10 nodes, addresses, neighbors, storage)
+├── README.md
 └── src/main/
     ├── java/
     │   ├── META-INF/MANIFEST.MF
@@ -36,6 +41,8 @@ lab3/
     │       ├── StorageEntry.java # address + storage value, sorted descending
     │       └── startnode         # bash helper script to launch a node
 ```
+
+> `build/`, `out/` and `.gradle/` (build output) are omitted.
 
 > Note: `mynet.json` is expected in the working directory (the `Deployment` reads `mynet.json` by default, or a path passed as the first argument).
 

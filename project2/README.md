@@ -17,10 +17,15 @@ A chat application built on a **service-oriented architecture (SOA)** using **gR
 ## Project Structure
 
 ```text
-lab02/
+project2/
+├── .gitignore                  # Ignores build/, .gradle/, .idea/
+├── .idea/                      # IntelliJ IDEA project configuration
+├── assets/                     # Screenshots (see below)
 ├── build.gradle.kts            # Java + protobuf-gradle-plugin, gRPC dependencies
 ├── settings.gradle.kts
+├── gradle/wrapper/             # Gradle wrapper jar + properties
 ├── gradlew / gradlew.bat       # Gradle wrapper (8.14.3)
+├── README.md
 └── src/main/
     ├── proto/
     │   ├── chat.proto          # ChatService & HistoryService definitions
@@ -35,6 +40,8 @@ lab02/
             ├── HelloWorldServer.java # Minimal gRPC example server
             └── Main.java             # Starter entry point
 ```
+
+> `build/` and `.gradle/` (Gradle output) are omitted.
 
 **Architecture:**
 
@@ -83,3 +90,7 @@ java -cp "build\classes\java\main;<dependencies>" chat.myHistoryServer
 - Client commands:
   - `!List` - print the current list of active members.
   - `!Exit` - leave the chat and close the connection.
+
+## Screenshots
+
+![Chat run](assets/run.png)
