@@ -41,8 +41,6 @@ project2/
             └── Main.java             # Starter entry point
 ```
 
-> `build/` and `.gradle/` (Gradle output) are omitted.
-
 **Architecture:**
 
 | Component      | Proto service   | Port  | Role                                              |
