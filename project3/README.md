@@ -42,9 +42,6 @@ project3/
     │       └── startnode         # bash helper script to launch a node
 ```
 
-> `build/`, `out/` and `.gradle/` (build output) are omitted.
-
-> Note: `mynet.json` is expected in the working directory (the `Deployment` reads `mynet.json` by default, or a path passed as the first argument).
 
 ## Requirements
 
